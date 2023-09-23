@@ -1,28 +1,86 @@
-<!--CMPS3141-HCI - AS3-23S1
-Collaborators:
-Date: Sept.22.23
- -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Expenses</title>
-	<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Couple Expenses App</title>
+    <!-- Include Vue.js from a CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="app">
+        <!-- Replace cmps3141-as3-css_app-23s1 below with your repo name (cmps3141-as3-css_app-23s1-yourusername) so you can save!  -->
+	    <ma-data v-model="expenses" src="https://github.com/UB-CMPS3141/cmps3141-as3-css-app-23s1-martinezmoises/blob/main/expenses/data.json"></ma-data>
+        <h1>Couple Expenses App</h1>
 
-<div id="app">
-	<!-- Replace cmps3141-as3-css_app-23s1 below with your repo name (cmps3141-as3-css_app-23s1-yourusername) so you can save!  -->
-	<ma-data v-model="expenses" src="https://github.com/UB-CMPS3141/as3-css_app-23s1/expenses/data.json"></ma-data>
+       <!-- Payment Form -->
+        <form @submit.prevent="addExpense">
+            <label for="desc">Description of Payment:</label>
+            <input type="text" id="desc" v-model="newExpense.desc" required>
+            
+            <label for="amount">Amount Paid (BZD):</label>
+            <input type="number" id="amount" v-model="newExpense.amount" required>
 
-	<!-- App YOUR UI here -->
+            <label for="currency">Currency:</label>
+            <select id="currency" v-model="newExpense.currency" required>
+                <option value="BZD">BZD</option>
+                <option value="GTQ">GTQ</option>
+                <option value="MXN">MXN</option>
+            </select>
+            
+            <label for="payer">Payer:</label>
+            <select id="payer" v-model="newExpense.payer" required>
+                <option value="Neo">Neo</option>
+                <option value="Trinity">Trinity</option>
+                <option value="Both">Both</option>
+            </select>
+            
+            <label for="date">Date Paid:</label>
+            <input type="date" id="date" v-model="newExpense.date" required>
+            <br>
+            <br>
+            <label for="debts">Add to debts:</label>
+            <input type="checkbox" id="debts" v-model="newExpense.debts">
+            <br>
 
-	<!-- Delete this line when you write your actual UI -->
-	{{ expenses.length }} expenses loaded.
-</div>
+            <br><button type="submit">Add Transaction</button>
+        </form>
 
-<script src="index.js" type="module"></script>
 
+        <!-- Display Expenses -->
+        <div class="expenses">
+            <h2>Expense List</h2>
+            <ul>
+                <li v-for="(expense, index) in expenses" :key="index">
+                    <p>Description of Payment: {{ expense.desc }}</p>   
+                    <p>Amount paid: {{ expense.amount.toFixed(2) }} BZD</p>  
+                    <p>Who paid: Payer: {{ expense.payer }}</p> 
+                    <p>Date paid: {{ expense.date }}</p> 
+                </li>
+            </ul>
+        </div>
+
+        <!-- Total Balance -->
+        <div class="total-balance">
+            <h2>Total Balance: {{ total_balance }} BZD</h2>
+        </div>
+
+        <!-- Debts Section -->
+       <div class="debts">
+            <h2>Debts List</h2>
+            <ul>
+                <li v-for="(debt, index) in debts" :key="index">
+                    <p>Debtor: {{ debt.debtor }}</p>
+                    <p>Creditor: {{ debt.creditor }}</p>
+                    <p>Amount: {{ debt.amount.toFixed(2) }} BZD</p>
+                </li>
+            </ul> 
+        </div>
+
+
+    </div>
+
+    <script src="index.js" type="module"></script>
 </body>
 </html>
