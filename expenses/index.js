@@ -34,23 +34,11 @@ globalThis.app = createApp({
 
             return amount * rates[to] / rates[from]
         },
-
-        mounted() {
-            // Fetch data from the JSON file and update the component's data
-            fetch('data.json') // Replace with the correct path to your JSON file
-                .then(response => response.json())
-                .then(data => {
-                    // Update component data with the fetched data
-                    this.expenses = data.expenses;
-                    this.debts = data.debts;
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                });
-        },
+        
         
 		addExpense() {
 			// Convert the new expense amount to BZD if it's in a different currency
+            
 			const amountInBZD = this.newExpense.currency === 'BZD'
 				? parseFloat(this.newExpense.amount)
 				: this.currencyConvert(this.newExpense.currency, 'BZD', parseFloat(this.newExpense.amount));
@@ -73,32 +61,6 @@ globalThis.app = createApp({
 				});
 			}
 		
-			// Save the updated expenses array to data.json
-			fetch('data.json', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(this.expenses), // Convert expenses array to JSON
-			})
-			.then(response => {
-				if (response.ok) {
-					// Clear the form
-					this.newExpense.desc = '';
-					this.newExpense.amount = '';
-					this.newExpense.currency = 'BZD'; // Reset to BZD
-					this.newExpense.payer = 'Neo';
-					this.newExpense.date = '';
-					this.newExpense.debts = false; // Reset the debts property
-				} else {
-					console.error('Error saving data:', response.status);
-				}
-			})
-			.catch(error => {
-				console.error('Error saving data:', error);
-			});
-
-			this.saveDataToJSON();
 		},
 		
     },

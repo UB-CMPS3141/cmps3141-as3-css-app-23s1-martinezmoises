@@ -11,7 +11,7 @@
 <body>
     <div id="app">
         <!-- Replace cmps3141-as3-css_app-23s1 below with your repo name (cmps3141-as3-css_app-23s1-yourusername) so you can save!  -->
-	    <ma-data v-model="expenses" src="https://github.com/UB-CMPS3141/cmps3141-as3-css-app-23s1-martinezmoises/blob/main/expenses/data.json"></ma-data>
+	    <ma-data v-model="expenses" src="https://github.com/UB-CMPS3141/cmps3141-as3-css-app-23s1-martinezmoises/expenses/data.json"></ma-data>
         <h1>Couple Expenses App</h1>
 
        <!-- Payment Form -->
@@ -52,11 +52,11 @@
         <div class="expenses">
             <h2>Expense List</h2>
             <ul>
-                <li v-for="(expense, index) in expenses" :key="index">
-                    <p>Description of Payment: {{ expense.desc }}</p>   
-                    <p>Amount paid: {{ expense.amount.toFixed(2) }} BZD</p>  
-                    <p>Who paid: Payer: {{ expense.payer }}</p> 
-                    <p>Date paid: {{ expense.date }}</p> 
+                <li v-for="(expenses, index) in expenses" :key="index">
+                    <p>Description of Payment: {{ expenses.desc }}</p>   
+                    <p>Amount paid: {{ expenses.amount.toFixed(2) }} BZD</p>  
+                    <p>Who paid: Payer: {{ expenses.payer }}</p> 
+                    <p>Date paid: {{ expenses.date }}</p> 
                 </li>
             </ul>
         </div>
@@ -74,7 +74,7 @@
                     <p>Debtor: {{ debt.debtor }}</p>
                     <p>Creditor: {{ debt.creditor }}</p>
                     <p>Amount: {{ debt.amount.toFixed(2) }} BZD</p>
-                </li>
+                </li>   
             </ul> 
         </div>
 

@@ -1,31 +1,40 @@
 {
-    "expenses": [
-      {
-        "desc": "Dinner",
-        "amount": 50,
-        "currency": "USD",
-        "payer": "Neo",
-        "date": "2023-09-22"
-      },
-      {
-        "desc": "Movie tickets",
-        "amount": 25,
-        "currency": "USD",
-        "payer": "Trinity",
-        "date": "2023-09-23"
-      }
-    ],
-    "debts": [
-      {
-        "debtor": "Trinity",
-        "creditor": "Neo",
-        "amount": 30
-      },
-      {
-        "debtor": "Neo",
-        "creditor": "Trinity",
-        "amount": 20
-      }
-    ]
-  }
-  
+  "expenses": [
+    {
+      "desc": "Dinner",
+      "amount": 50.00,
+      "currency": "BZD",
+      "payer": "Neo",
+      "date": "2023-09-22",
+      "debts": false
+    },
+    {
+      "desc": "Movie Tickets",
+      "amount": 25.00,
+      "currency": "BZD",
+      "payer": "Trinity",
+      "date": "2023-09-21",
+      "debts": true
+    },
+    {
+      "desc": "Groceries",
+      "amount": 100.00,
+      "currency": "GTQ",
+      "payer": "Both",
+      "date": "2023-09-20",
+      "debts": true
+    }
+  ],
+  "debts": [
+    {
+      "debtor": "Trinity",
+      "creditor": "Neo",
+      "amount": 25.00
+    },
+    {
+      "debtor": "Both",
+      "creditor": "Trinity",
+      "amount": 100.00
+    }
+  ]
+}
