@@ -1,5 +1,5 @@
-{
-  "expenses": [
+[
+  
     {
       "desc": "Dinner",
       "amount": 50.00,
@@ -8,6 +8,7 @@
       "date": "2023-09-22",
       "debts": false
     },
+
     {
       "desc": "Movie Tickets",
       "amount": 25.00,
@@ -16,6 +17,7 @@
       "date": "2023-09-21",
       "debts": true
     },
+    
     {
       "desc": "Groceries",
       "amount": 100.00,
@@ -24,17 +26,4 @@
       "date": "2023-09-20",
       "debts": true
     }
-  ],
-  "debts": [
-    {
-      "debtor": "Trinity",
-      "creditor": "Neo",
-      "amount": 25.00
-    },
-    {
-      "debtor": "Both",
-      "creditor": "Trinity",
-      "amount": 100.00
-    }
   ]
-}
